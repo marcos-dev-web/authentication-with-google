@@ -1,5 +1,5 @@
 import { Router } from "express";
-import verify from './auth/googleVerify.js';
+import { verify, checkAuthenticated } from "./auth/middlewares.js";
 
 const router = Router();
 
@@ -11,18 +11,25 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/profile", checkAuthenticated, (req, res) => {
+  let user = req.user;
+  res.render("profile", { user });
+});
+
 router.post("/gettoken", async (req, res) => {
-  let token = req.body['idtoken'];
-  verify(token).then(() => {
-    res.cookie('session-token', token);
-    res.send({
-      logged: true
+  let token = req.body["idtoken"];
+  verify(token)
+    .then(() => {
+      res.cookie("session-token", token);
+      res.send("success");
     })
-  }).catch((err) => {
-    res.status(500).send({
-      logged: false
-    }).end();
-  })
+    .catch((err) => {
+      res.send("error");
+    });
+});
+
+router.post("/loged", checkAuthenticated, (req, res) => {
+  res.send("success");
 });
 
 export default router;

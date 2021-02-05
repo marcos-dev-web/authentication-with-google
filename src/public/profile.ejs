@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/profile.css">
+  <title>Login</title>
+</head>
+<body>
+  <main>
+    <header>
+      <% if (user) { %> 
+        <h2 class="name"><%= user.name %> </h2>
+        <div class="img">
+          <img src="<%= user.picture %>" alt="<%= user.picture %>">
+        </div>
+      <% } %> 
+    </header>
+    </section>
+  </main>
+</body>
+</html>
