@@ -10,14 +10,26 @@
   <title>Login</title>
 </head>
 <body>
-  <span class="img"></span>
-  <h1 id="title">Login</h1>
-  <p id="text">Make your login with google</p>
-  
-  <div class="g-signin2" id="g" data-onsuccess="onSignIn"></div>
-  
-  <a href="#" id="g" onclick="signOut();">Sign out</a>
 
+
+  <main>
+    <header>
+      <h1>Login</h1>
+      <span class="server name"></span>
+      <span class="server img"></span>
+    </header>
+    <section class="content">
+      <div class="item">
+        <p id="text">Make your login with google</p>
+      </div>
+      <div class="item">
+        <div class="g-signin2" id="g" data-onsuccess="onSignIn"></div>
+      </div>
+      <div class="item">
+        <button id="g" class="g2 server" onclick="signOut();" >Sign out</button>
+      </div>
+    </section>
+  </main>
   <script src="/js/login.js"></script>
 </body>
 </html>
