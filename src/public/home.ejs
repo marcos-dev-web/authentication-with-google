@@ -5,9 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>home page</title>
   <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
-  <h1>Wellcome to my page home!</h1>
-  <p>make your login in this page <a href="/login">here</a></p>
+  <main>
+    <header>
+      <% if (!user) {%>
+        <h1>Wellcome to page home!</h1>
+      <% } else {%>
+        <h1 class="name"><%= user.name %></h1>
+        <div class="img">
+          <img src="<%= user.picture %>" alt="<%= user.picture %>" />
+        </div>
+      <%}%>
+    </header>
+    <section class="content">
+      <div class="item">
+        <% if (!user) { %>
+          <p>make your login in this page <a href="/login">here</a></p>
+        <%} else {%>
+          <p>Welcome <%= user.name %>!</p>
+        <%}%>
+      </div>
+    </section>
+    <% if (user) {%>
+      <footer>
+        <a href="/logout" class="logout">Log Out</a>
+      </footer>
+    <%}%>
+  </main>
 </body>
 </html>

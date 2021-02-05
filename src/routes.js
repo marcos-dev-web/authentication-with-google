@@ -4,7 +4,8 @@ import { verify, checkAuthenticated } from "./auth/middlewares.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-  res.render("home");
+  console.log(req.user)
+  res.render("home", {user: global.user});
 });
 
 router.get("/login", (req, res) => {
@@ -16,8 +17,8 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/profile", checkAuthenticated, (req, res) => {
-  let user = req.user;
-  res.render("profile", { user });
+  global.user = req.user;
+  res.render("profile", { user: global.user });
 });
 
 router.post("/gettoken", async (req, res) => {
@@ -34,6 +35,7 @@ router.post("/gettoken", async (req, res) => {
 
 router.get('/logout', (req, res) => {
   if (req.cookies['session-token']) {
+    global.user = null
     res.clearCookie('session-token');
     res.redirect('/login')
   } else {

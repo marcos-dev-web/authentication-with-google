@@ -41,7 +41,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  height: 60px;
+  min-height: 60px;
   width: 100%;
   overflow: hidden;
   position: relative;
