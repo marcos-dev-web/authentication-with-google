@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="270885014673-0mnqm5vuuai6brhetqeposvu06pejcp0.apps.googleusercontent.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>Login</title>
+</head>
+<body>
+  <span class="img"></span>
+  <h1 id="title">Login</h1>
+  <p id="text">Make your login with google</p>
+  
+  <div class="g-signin2" id="g" data-onsuccess="onSignIn"></div>
+  
+  <a href="#" id="g" onclick="signOut();">Sign out</a>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>
