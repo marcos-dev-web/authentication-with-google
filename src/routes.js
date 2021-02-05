@@ -8,7 +8,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  if (!req.cookies['session-token']) {
+    res.render("login");
+  } else {
+    res.redirect('/profile');
+  }
 });
 
 router.get("/profile", checkAuthenticated, (req, res) => {
@@ -23,10 +27,19 @@ router.post("/gettoken", async (req, res) => {
       res.cookie("session-token", token);
       res.send("success");
     })
-    .catch((err) => {
+    .catch(() => {
       res.send("error");
     });
 });
+
+router.get('/logout', (req, res) => {
+  if (req.cookies['session-token']) {
+    res.clearCookie('session-token');
+    res.redirect('/login')
+  } else {
+    res.redirect('/');
+  }
+})
 
 router.post("/loged", checkAuthenticated, (req, res) => {
   res.send("success");
